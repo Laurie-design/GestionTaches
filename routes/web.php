@@ -1,7 +1,24 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
+
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Tâches
+
+Route::get('/tache/list', [TaskController::class, 'indexTache'])->name('tache.list');
+
+Route::get('/tache/add', [TaskController::class, 'create'])->name('tache.create');
+Route::post('/tache/store', [TaskController::class, 'store'])->name('tache.store');
+
+Route::get('/tache/edit/{id}', [TaskController::class, 'edit'])->name('tache.edit');
+Route::post('/tache/update/{id}', [TaskController::class, 'update'])->name('tache.update');
+
+Route::delete('/tache/delete/{id}', [TaskController::class, 'destroy'])->name('tache.destroy');
+
+
+
